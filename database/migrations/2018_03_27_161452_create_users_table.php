@@ -38,7 +38,7 @@ class CreateUsersTable extends Migration
 
             //created_at /update_at /deleted_at
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes(); //deleted_at
             
             //created_at
             //update_at
