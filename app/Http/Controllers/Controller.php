@@ -11,19 +11,21 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    	//homepage
+    //homepage
     public function homepage()
     {
     	return view('welcome');
     }
-        //register
+    //register
     public function register()
     {
     	return view('register');
     }
-        //login
+
+
+    //method user login VIEW
     public function login()
     {
-    	return view('login');
+    	return view('user.login');
     }
 }
