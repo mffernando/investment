@@ -12,6 +12,17 @@
 }
 
 /*stylesheet login page*/
+/*image
+credits: https://www.flaticon.com/free-icon/investment_180816#term=investment&page=1&position=14*/
+div.background{
+	position: absolute;
+	left: 0;
+	width: calc(100% - 300px);
+	height: 100%;
+	background: url(../assets/images/investment.png);
+	background-image: cover;
+}
+
 /*content-view*/
 section#content-view{
 	position: absolute;

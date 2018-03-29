@@ -8,6 +8,9 @@
 	<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
 </head>
 <body>
+	
+	<!--image-->
+	<div class="background"></div>
 
 	<section id="content-view" class="login">
 
