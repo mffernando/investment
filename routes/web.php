@@ -18,7 +18,8 @@ Route::get('/register', ['uses' => 'Controller@register']);
 //Routes user auth
 //login
 Route::get('/login', ['uses' => 'Controller@login']);
-Route::post('/login', ['as' => 'user.login', 'uses' => 'Controller@login']);
+Route::post('/login', ['as' => 'user.login', 'uses' => 'DashboardController@auth']);
+Route::post('/dashboard', ['as' => 'user.dashboard', 'uses' => 'DashboardController@index']);
 
 
 /*
