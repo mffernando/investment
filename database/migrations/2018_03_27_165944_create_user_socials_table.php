@@ -14,10 +14,12 @@ class CreateUserSocialsTable extends Migration
     public function up()
     {
         Schema::create('user_socials', function (Blueprint $table) {
+            $table->engine = "InnoDB";
+
             $table->increments('id');
 
             //social data
-            $table->integer('user_id')->unsined();
+            $table->integer('user_id')->unsigned();
             $table->string('social_network');
             $table->string('social_id');
             $table->string('social_email');

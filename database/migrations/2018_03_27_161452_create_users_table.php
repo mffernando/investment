@@ -16,6 +16,8 @@ class CreateUsersTable extends Migration
 	public function up()
 	{
 		Schema::create('users', function(Blueprint $table) {
+						$table->engine = "InnoDB";
+
             $table->increments('id');
 
             //people data
@@ -39,7 +41,7 @@ class CreateUsersTable extends Migration
             //created_at /update_at /deleted_at
             $table->timestamps();
             $table->softDeletes(); //deleted_at
-            
+
             //created_at
             //update_at
             //deleted_at
