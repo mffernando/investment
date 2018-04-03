@@ -23,7 +23,7 @@ class DashboardController extends Controller
   //index method
   public function index()
   {
-    echo "index";
+    return view('user.dashboard');
   }
 
   //auth method
