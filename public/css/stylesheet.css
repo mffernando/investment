@@ -10,7 +10,7 @@
 		-moz-box-sizing: border-box;
 			-box-sizing: border-box;
 }
-
+/******************************************************************************************/
 /*stylesheet login page*/
 /*image
 credits: https://www.flaticon.com/free-icon/investment_180816#term=investment&page=1&position=14*/
@@ -94,4 +94,65 @@ section#content-view form input[type="submit"]{
 	text-align: center;
 	background: #87CEEB;
 	font: 1em 'Fredoka One', cursive;
+}
+
+/*body*/
+body{
+	background: #ececec;
+}
+
+/******************************************************************************************/
+/*stylesheet lateral menu*/
+
+#lateral-menu{
+	position: fixed;
+	float: left;
+	width: 220px;
+	height: 100%;
+	background: #fff;
+	border-right: #e9e9e9;
+	box-shadow: 0 0 15px rgba(0, 0, 0, .15);
+}
+
+/*ul li*/
+#lateral-menu ul,
+#lateral-menu ul li{
+	float: left;
+	width: 100%;
+}
+
+/*a*/
+#lateral-menu ul li a{
+	float: left;
+	width: 100%;
+	height: 80px;
+	color: black;
+	border-bottom: 	1px solid #e9e9e9;
+}
+
+/*i*/
+#lateral-menu ul li a i{
+	float: left;
+	width: 80px;
+	height: 80px;
+	color: inherit;
+	text-align: center;
+	line-height: 80px;
+	font-size: 2em;
+}
+
+/*h3*/
+#lateral-menu ul li a h3{
+	float: left;
+	height: 80px;
+	font: 1.25em/80px 'Fredoka One', cursive;
+	color: inherit;
+}
+
+/*a:hover*/
+#lateral-menu ul li a:hover{
+	float: left;
+	height: 80px;
+	font: 1.25em/80px 'Fredoka One', cursive;
+	color: #87CEEB;
 }
