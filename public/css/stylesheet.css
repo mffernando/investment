@@ -201,10 +201,19 @@ form.standard-form label span{
 	background: transparent;
 }
 
+/*input*/
+form.standard-form label input{
+	float: left;
+	width: 100%;
+	color: #5c5c5c;
+	font: 400	1.25em 'Arial';
+	background: transparent;
+}
+
 /*submit*/
 form.standard-form label.submit{
 	background: #87CEEB;
-	border-color: black;
+	border-color: #e9e9e9;
 }
 
 /*submit input*/
