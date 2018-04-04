@@ -75,7 +75,7 @@ class UsersController extends Controller
 
       //dd($request);
 
-      session()->flush('success', [
+      session()->flash('success', [
         'success' => $request['success'],
         'message' => $request['message']
       ]);

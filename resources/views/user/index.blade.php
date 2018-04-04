@@ -10,8 +10,6 @@
 
   @if(session('success'))
     <h3>{{ session('success')['message'] }}</h3>
-  @else
-    <h3>ERROR</h3>
   @endif
 
 <!--form-->
@@ -23,6 +21,34 @@
     @include('templates.form.password', ['label' => 'PASSWORD','input' => 'password', 'attributes' => ['placeholder' => 'Password']])
     @include('templates.form.submit', ['input' => 'submit'])
   {!! Form::close() !!}
+
+  <table class="default-table">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>CPF</td>
+        <td>Name</td>
+        <td>Phone</td>
+        <td>Birth</td>
+        <td>E-mail</td>
+        <td>Status</td>
+        <td>Permission</td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 
 
 @endsection
