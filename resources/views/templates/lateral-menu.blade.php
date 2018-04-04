@@ -1,7 +1,7 @@
 <nav id="lateral-menu">
   <ul>
     <li>
-      <a href="user">
+      <a href="{{route('user.index')}}">
         <i class="fa fa-address-book"></i>
         <h3>Users</h3>
       </a>
