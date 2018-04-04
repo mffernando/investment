@@ -45,6 +45,27 @@ class UserService
   }
 
   public function update(){}
-  public function delete(){}
 
+  public function destroy($user_id)
+  {
+    try {
+
+      $this->repository->delete($user_id);
+
+      return[
+        'success' => true,
+        'message' => "Deleted User!",
+        'data' => null,
+      ];
+    } catch (Exception $e) {
+
+      switch (get_class($e))
+      {
+        case QueryException::class      : return ['success' => false, 'message' => $e->getMessage()];
+        case ValidatorException::class  : return ['success' => false, 'message' => $e->getMessageBag()];
+        case Exception::class           : return ['success' => false, 'message' => $e->getMessage()];
+        default                         : return ['success' => false, 'message' => $e->getMessage()];
+      }
+    }
+  }
 }
