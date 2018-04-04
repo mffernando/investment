@@ -33,4 +33,32 @@ class User extends Authenticatable
     {
       $this->attributes['password'] = env('PASSWORD_HASH') ? bcrypt($value) : $value;
     }
+
+    //formatting the cpf
+    public function getCpfAttribute()
+    {
+      $cpf = $this->attributes['cpf'];
+      return substr($cpf, 0, 3) . '.' . substr($cpf, 3, 3) . '.' . substr($cpf, 7, 3) . '-' . substr($cpf, -2);
+    }
+
+    //formatting the phone number
+    public function getPhoneAttribute()
+    {
+      $phone = $this->attributes['phone'];
+      return '(' . substr($phone, 0, 2) . ') ' . substr($phone, 2, 4) . '-' . substr($phone, -4);
+    }
+
+    //formatting the date
+    public function getBirthAttribute()
+    {
+      $birth = explode('-', $this->attributes['birth']);
+
+      //if null or empty
+      if(count($birth) != 3)
+        return "";
+
+      //DD/MM/YYYY
+      $birth = $birth[2] . '/' . $birth[1] . '/' . $birth[0];
+      return $birth;
+    }
 }
