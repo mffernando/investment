@@ -8,6 +8,12 @@
 
 @section('content-view')
 
+  @if(session('success'))
+    <h3>{{ session('success')['message'] }}</h3>
+  @else
+    <h3>ERROR</h3>
+  @endif
+
 <!--form-->
   {!! Form::open(['route' => 'user.store', 'method' => 'post', 'class' => 'standard-form']) !!}
     @include('templates.form.input', ['label' => 'CPF','input' => 'cpf', 'attributes' => ['placeholder' => 'CPF']])

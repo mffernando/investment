@@ -2,6 +2,9 @@
 
 namespace App\Services;
 
+use Illuminate\Database\QueryException;
+use Exception;
+use Prettus\Validator\Exceptions\ValidatorException;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use App\Repositories\UserRepository;
 use App\Validators\UserValidator;
@@ -29,15 +32,18 @@ class UserService
         'message' => "Registered User!",
         'data' => $user,
       ];
-    } catch (\Exception $e) {
-      return[
-        'success' => false,
-        'message' => "Execution Error!",
-      ];
-    }
+    } catch (Exception $e) {
 
+      switch (get_class($e))
+      {
+        case QueryException::class      : return ['success' => false, 'message' => $e->getMessage()];
+        case ValidatorException::class  : return ['success' => false, 'message' => $e->getMessageBag()];
+        case Exception::class           : return ['success' => false, 'message' => $e->getMessage()];
+        default                         : return ['success' => false, 'message' => $e->getMessage()];
+      }
+    }
   }
-  
+
   public function update(){}
   public function delete(){}
 
