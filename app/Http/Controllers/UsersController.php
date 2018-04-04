@@ -56,7 +56,12 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('user.index');
+
+        $users = $this->repository->all();
+
+        return view('user.index', [
+          'users' => $users
+        ]);
     }
 
     /**
