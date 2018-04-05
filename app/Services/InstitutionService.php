@@ -12,7 +12,7 @@ class InstitutionService
   private $repository;
   private $validator;
 
-  public __construct(InstitutionRepository $repository, InstitutionValidator $validator)
+  public function __construct(InstitutionRepository $repository, InstitutionValidator $validator)
   {
     $this->repository = $repository;
     $this->validator = $validator;

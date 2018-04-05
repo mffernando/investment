@@ -60,7 +60,7 @@ class UsersController extends Controller
         $users = $this->repository->all();
 
         return view('user.index', [
-          'users' => $users
+          'users' => $users,
         ]);
     }
 
@@ -85,9 +85,7 @@ class UsersController extends Controller
         'message' => $request['message']
       ]);
 
-      return view('user.index', [
-        'user' => $user,
-      ]);
+      return redirect()->route('user.index');
     }
 
     /**
