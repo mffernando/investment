@@ -11,6 +11,7 @@ use App\Http\Requests\GroupCreateRequest;
 use App\Http\Requests\GroupUpdateRequest;
 use App\Repositories\GroupRepository;
 use App\Validators\GroupValidator;
+use App\Services\GroupService;
 
 /**
  * Class GroupsController.
@@ -30,15 +31,21 @@ class GroupsController extends Controller
     protected $validator;
 
     /**
+     * @var GroupService
+     */
+    protected $service;
+
+    /**
      * GroupsController constructor.
      *
      * @param GroupRepository $repository
      * @param GroupValidator $validator
      */
-    public function __construct(GroupRepository $repository, GroupValidator $validator)
+    public function __construct(GroupRepository $repository, GroupValidator $validator, GroupService $service)
     {
         $this->repository = $repository;
         $this->validator  = $validator;
+        $this->service = $service;
     }
 
     /**
@@ -48,17 +55,11 @@ class GroupsController extends Controller
      */
     public function index()
     {
-        $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         $groups = $this->repository->all();
 
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $groups,
-            ]);
-        }
-
-        return view('groups.index', compact('groups'));
+        return view('groups.index', [
+          'groups' => $groups,
+        ]);
     }
 
     /**
@@ -72,33 +73,17 @@ class GroupsController extends Controller
      */
     public function store(GroupCreateRequest $request)
     {
-        try {
+      $request = $this->service->store($request->all());
+      $group = $request['success'] ? $request['data'] : null;
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
+      //dd($request);
 
-            $group = $this->repository->create($request->all());
+      session()->flash('success', [
+        'success' => $request['success'],
+        'message' => $request['message']
+      ]);
 
-            $response = [
-                'message' => 'Group created.',
-                'data'    => $group->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
-        }
+      return redirect()->route('group.index');
     }
 
     /**
@@ -190,15 +175,6 @@ class GroupsController extends Controller
     public function destroy($id)
     {
         $deleted = $this->repository->delete($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'message' => 'Group deleted.',
-                'deleted' => $deleted,
-            ]);
+        return redirect()->route('group.index');
         }
-
-        return redirect()->back()->with('message', 'Group deleted.');
     }
-}

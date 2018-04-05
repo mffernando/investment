@@ -14,7 +14,7 @@
     </li>
   </li>
   <li>
-    <a href="">
+    <a href="{{route('group.index')}}">
       <i class="fa fa-users"></i>
       <h3>Groups</h3>
     </a>
