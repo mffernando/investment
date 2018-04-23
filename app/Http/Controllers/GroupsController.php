@@ -89,20 +89,20 @@ class GroupsController extends Controller
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store(GroupCreateRequest $request)
-    {
-      $request = $this->service->store($request->all());
-      $group = $request['success'] ? $request['data'] : null;
+     public function store(GroupCreateRequest $request)
+     {
+       $request = $this->service->store($request->all());
+       $group = $request['success'] ? $request['data'] : null;
 
-      //dd($request);
+       dd($request);
 
-      session()->flash('success', [
-        'success' => $request['success'],
-        'message' => $request['message']
-      ]);
+       session()->flash('success', [
+         'success' => $request['success'],
+         'message' => $request['message']
+       ]);
 
-      return redirect()->route('group.index');
-    }
+       return redirect()->route('group.index');
+     }
 
     /**
      * Display the specified resource.
@@ -113,30 +113,6 @@ class GroupsController extends Controller
      */
     public function show($id)
     {
-        $group = $this->repository->find($id);
-
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $group,
-            ]);
-        }
-
-        return view('groups.show', compact('group'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $group = $this->repository->find($id);
-
-        return view('groups.edit', compact('group'));
     }
 
     /**

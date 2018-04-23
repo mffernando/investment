@@ -21,7 +21,7 @@ class GroupService
     $this->validator = $validator;
   }
 
-  public function store(array $data) : array
+  public function store(array $data)
   {
     try {
 

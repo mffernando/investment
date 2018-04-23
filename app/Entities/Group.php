@@ -22,7 +22,7 @@ class Group extends Model implements Transformable
      */
     protected $fillable = ['name', 'user_id', 'institution_id'];
 
-    public function owner()
+    public function user()
     {
       return $this->belongsTo(User::class);
     }
