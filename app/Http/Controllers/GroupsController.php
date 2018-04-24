@@ -69,8 +69,8 @@ class GroupsController extends Controller
      */
     public function index()
     {
-        $groups = $this->repository->all();
-        $user_list = $this->userRepository->selectBoxList();
+        $groups           = $this->repository->all();
+        $user_list        = $this->userRepository->selectBoxList();
         $institution_list = $this->institutionRepository->selectBoxList();
 
         return view('groups.index', [
@@ -94,7 +94,7 @@ class GroupsController extends Controller
        $request = $this->service->store($request->all());
        $group = $request['success'] ? $request['data'] : null;
 
-       dd($request);
+       //dd($request);
 
        session()->flash('success', [
          'success' => $request['success'],
