@@ -20,6 +20,7 @@
         {!! Form::open(['route' => ['group.destroy', $group->id], 'method' => 'DELETE']) !!}
         {!! Form::submit('Delete') !!}
         {!! Form::close() !!}
+        <a href="{{ route('group.show', $group->id) }}"> More </a>
       </td>
     </tr>
     @endforeach
