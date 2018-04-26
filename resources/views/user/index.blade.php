@@ -22,40 +22,7 @@
     @include('templates.form.submit', ['input' => 'submit'])
   {!! Form::close() !!}
 
-  <table class="default-table">
-    <thead>
-      <tr>
-        <td>#</td>
-        <td>CPF</td>
-        <td>Name</td>
-        <td>Phone</td>
-        <td>Birth</td>
-        <td>E-mail</td>
-        <td>Status</td>
-        <td>Permission</td>
-        <td>Options</td>
-      </tr>
-    </thead>
+<!--show-->
+@include('user.list', ['user_list' => $group->users])
 
-    <tbody>
-      @foreach($users as $user)
-      <tr>
-        <td>{{ $user->id }}</td>
-        <td>{{ $user->formatted_cpf }}</td>
-        <td>{{ $user->name }}</td>
-        <td>{{ $user->formatted_phone }}</td>
-        <td>{{ $user->formatted_birth }}</td>
-        <td>{{ $user->email }}</td>
-        <td>{{ $user->status }}</td>
-        <td>{{ $user->permission }}</td>
-        <!--delete-->
-        <td>
-          {!! Form::open(['route' => ['user.destroy', $user->id], 'method' => 'DELETE']) !!}
-          {!! Form::submit('Delete') !!}
-          {!! Form::close() !!}
-        </td>
-      </tr>
-      @endforeach
-    </tbody>
-  </table>
 @endsection

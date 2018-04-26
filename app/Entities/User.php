@@ -29,6 +29,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    //N:N
+    public function groups()
+    {
+      return $this->belongsToMany(Group::class, 'user_groups');
+    }
+
     public function setPasswordAttribute($value)
     {
       $this->attributes['password'] = env('PASSWORD_HASH') ? bcrypt($value) : $value;

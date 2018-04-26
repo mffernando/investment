@@ -104,6 +104,20 @@ class GroupsController extends Controller
        return redirect()->route('group.index');
      }
 
+     public function userStore(Request $request, $group_id)
+     {
+       $request = $this->service->userStore($group_id, $request->all());
+
+       //dd($request);
+
+       session()->flash('success', [
+         'success' => $request['success'],
+         'message' => $request['message']
+       ]);
+
+       return redirect()->route('group.show', [$group_id]);
+     }
+
     /**
      * Display the specified resource.
      *
