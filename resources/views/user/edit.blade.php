@@ -13,12 +13,9 @@
   @endif
 
 <!--form-->
-  {!! Form::open(['route' => 'user.store', 'method' => 'post', 'class' => 'standard-form']) !!}
+  {!! Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'put', 'class' => 'standard-form']) !!}
     @include('user.form-fields')
-    @include('templates.form.submit', ['input' => 'submit'])
+    @include('templates.form.submit', ['input' => 'update'])
   {!! Form::close() !!}
-
-<!--show-->
-@include('user.list', ['user_list' => $users])
 
 @endsection

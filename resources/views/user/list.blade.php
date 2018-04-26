@@ -29,6 +29,7 @@
         {!! Form::open(['route' => ['user.destroy', $user->id], 'method' => 'DELETE']) !!}
         {!! Form::submit('Delete') !!}
         {!! Form::close() !!}
+        <a href="{{ route('user.edit', $user->id) }}"> Edit </a>
       </td>
     </tr>
     @endforeach
