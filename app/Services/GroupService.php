@@ -46,6 +46,31 @@ class GroupService
     }
   }
 
+  public function update(array $data, $id) : array
+  {
+    try {
+
+      $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_UPDATE);
+      $group = $this->repository->update($data, $id);
+
+      return[
+        'success' => true,
+        'message' => "Updated Group!",
+        'data' => $group,
+      ];
+
+    } catch (Exception $e) {
+
+      switch (get_class($e))
+      {
+        case QueryException::class      : return ['success' => false, 'message' => $e->getMessage()];
+        case ValidatorException::class  : return ['success' => false, 'message' => $e->getMessageBag()];
+        case Exception::class           : return ['success' => false, 'message' => $e->getMessage()];
+        default                         : return ['success' => false, 'message' => $e->getMessage()];
+      }
+    }
+  }
+
   public function userStore($group_id, $data)
   {
     try {

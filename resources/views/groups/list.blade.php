@@ -21,6 +21,7 @@
         {!! Form::submit('Delete') !!}
         {!! Form::close() !!}
         <a href="{{ route('group.show', $group->id) }}"> More </a>
+        <a href="{{ route('group.edit', $group->id) }}"> Edit </a>
       </td>
     </tr>
     @endforeach

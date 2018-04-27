@@ -26,6 +26,14 @@ Route::resource('user', 'UsersController');
 Route::resource('institution', 'InstitutionsController');
 Route::resource('group', 'GroupsController');
 
+#route resource does:
+#Route::get('group', 'GroupsController@index');
+#Route::post('group', 'GroupsController@store');
+#Route::get('group/{id}', 'GroupsController@show');
+#Route::update('group/{id}', 'GroupsController@update');
+#Route::delete('group/{id}', 'GroupsController@delete');
+
+
 //group.user.store
 Route::post('group/{group_id}/user', ['as' => 'group.user.store', 'uses' => 'GroupsController@userStore']);
 /*
