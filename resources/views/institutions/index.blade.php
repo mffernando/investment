@@ -29,6 +29,7 @@
         {!! Form::submit("Delete") !!}
         {!! Form::close() !!}
         <a href="{{ route('institution.show', $institution->id) }}">More</a>
+        <a href="{{ route('institution.edit', $institution->id) }}">Edit</a>
       </td>
     </tr>
     @endforeach
