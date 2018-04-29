@@ -25,6 +25,9 @@ Route::get('/dashboard', ['as' => 'user.dashboard', 'uses' => 'DashboardControll
 Route::resource('user', 'UsersController');
 Route::resource('institution', 'InstitutionsController');
 Route::resource('group', 'GroupsController');
+Route::resource('institution.product', 'ProductsController');
+
+//php artisan route:list
 
 #route resource does:
 #Route::get('group', 'GroupsController@index');
