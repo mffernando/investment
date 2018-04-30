@@ -26,11 +26,16 @@ class ProductsController extends Controller
 
     public function index($institution_id)
     {
-      $products = $this->repository->all();
-      $institution = Institution::find($institution_id);
+      //$products = $this->repository->all();
+      //$institution = Institution::find($institution_id);
+      //$products = $this->repository->findWhere(['institution_id' => $institution_id]);
       //$products = [];
 
       //dd($products);
+      //dd($institution);
+
+      $institution = Institution::find($institution_id);
+
       //dd($institution);
 
       return view('institutions.product.index', [
@@ -114,18 +119,14 @@ class ProductsController extends Controller
         }
     }
 
-    public function destroy($id)
+    public function destroy($institution_id, $product_id)
     {
-        $deleted = $this->repository->delete($id);
+        $deleted = $this->repository->delete($product_id);
 
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'message' => 'Product deleted.',
-                'deleted' => $deleted,
-            ]);
-        }
-
-        return redirect()->back()->with('message', 'Product deleted.');
+        session()->flash('success', [
+          'success' => true,
+          'message' => "Deleted Product!"
+        ]);
+        return redirect()->back();
     }
 }
