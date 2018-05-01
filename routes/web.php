@@ -27,6 +27,9 @@ Route::resource('institution', 'InstitutionsController');
 Route::resource('group', 'GroupsController');
 Route::resource('institution.product', 'ProductsController');
 
+//moviment.application
+Route::get('moviment', ['as' => 'moviment.application', 'uses' => 'MovimentsController@application']);
+
 //php artisan route:list
 
 #route resource does:
