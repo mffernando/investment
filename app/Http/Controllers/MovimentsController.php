@@ -12,12 +12,8 @@ use App\Http\Requests\MovimentUpdateRequest;
 use App\Repositories\MovimentRepository;
 use App\Validators\MovimentValidator;
 use App\Entities\{Group, Product};
+use Auth;
 
-/**
- * Class MovimentsController.
- *
- * @package namespace App\Http\Controllers;
- */
 class MovimentsController extends Controller
 {
     protected $repository;
@@ -31,7 +27,13 @@ class MovimentsController extends Controller
 
     public function application()
     {
-      $group_list = Group::all()->pluck('name', 'id');
+      //dd(Auth::user());
+
+      $user = Auth::user();
+      //dd($user->groups->pluck('name', 'id'));
+
+      $group_list = $user->groups->pluck('name', 'id');
+      //$group_list = Group::all()->pluck('name', 'id');
       $product_list = Product::all()->pluck('name', 'id');
 
       return view ('moviment.application', [
