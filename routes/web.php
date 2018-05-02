@@ -29,6 +29,7 @@ Route::resource('institution.product', 'ProductsController');
 
 //moviment.application
 Route::get('moviment', ['as' => 'moviment.application', 'uses' => 'MovimentsController@application']);
+Route::post('moviment', ['as' => 'moviment.application.store', 'uses' => 'MovimentsController@storeApplication']);
 
 //php artisan route:list
 

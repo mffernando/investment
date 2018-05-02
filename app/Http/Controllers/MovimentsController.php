@@ -11,7 +11,7 @@ use App\Http\Requests\MovimentCreateRequest;
 use App\Http\Requests\MovimentUpdateRequest;
 use App\Repositories\MovimentRepository;
 use App\Validators\MovimentValidator;
-use App\Entities\{Group, Product};
+use App\Entities\{Group, Product, Moviment};
 use Auth;
 
 class MovimentsController extends Controller
@@ -40,5 +40,23 @@ class MovimentsController extends Controller
         'group_list' => $group_list,
         'product_list' => $product_list,
       ]);
+    }
+
+    public function storeApplication(Request $request)
+    {
+      //dd($request->all());
+      $moviment = Moviment::create([
+      'user_id'     => Auth::user()->id,
+      'group_id'    => $request->get('group_id'),
+      'product_id'  => $request->get('product_id'),
+      'value'       => $request->get('value'),
+      'type'        => 1,
+      ]);
+
+      session()->flash('success', [
+        'success' => true,
+        'message' => "Successful Application (Value: " . $moviment->value . " Product: " . $moviment->product->name . ")",
+      ]);
+      return redirect()->route('moviment.application');
     }
 }
