@@ -14,6 +14,7 @@
     <tr>
       <td>{{ $group->id }}</td>
       <td>{{ $group->name }}</td>
+      <td>R$ {{ number_format($group->total_value, 2, ',', '.') }}</td>      
       <td>{{ $group->user->name }}</td>
       <td>{{ $group->institution->name }}</td>
       <td>
